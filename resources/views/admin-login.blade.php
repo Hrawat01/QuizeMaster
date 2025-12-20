@@ -12,7 +12,8 @@
 
     <h1 class="text-2xl text-blue-700 pr-5 font-bold">Admin Login</h1>
     
-    <form action="admin-login" method="post" class="flex flex-col items-center">
+    {{-- if action="admin.." then the path url will be like admin-login/admin-login --}}
+    <form action="/admin-login" method="post" class="flex flex-col items-center">
 
         @csrf
 

@@ -15,10 +15,10 @@
         <div class="flex justify-between item-center">
             <div class="font-bold text-[20px] hover:text-green-500">Quiz System</div>
             <div class="flex gap-5">
-                <a class="text-gray-700 hover:text-blue-500" href="">Categories</a>
+                <a class="text-gray-700 hover:text-blue-500" href="/admin-categories">Categories</a>
                 <a class="text-gray-700 hover:text-blue-500" href="">Quiz</a>
                 <a class="text-gray-700 hover:text-blue-500" href="">Wellcome,{{$name}}</a>
-                <a class="text-gray-700 hover:text-blue-500" href="">Login</a>
+                <a class="text-gray-700 hover:text-blue-500" href="">Logout</a>
             </div>
         </div>
     </nav>

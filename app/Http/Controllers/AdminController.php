@@ -9,6 +9,10 @@ use App\Models\Admin;
 
 class AdminController extends Controller
 {
+
+    //login
+
+
    function login(Request $req){
 
     // validation
@@ -33,11 +37,27 @@ class AdminController extends Controller
 
 
 
+
+   //dashboard
+
    function dashboard(){
 
    $admin =  Session::get('admin');
    if ($admin) {
        return view('admin',['name'=>$admin->name]);
+   }else{
+    return redirect('admin-login');
+   }
+   }
+
+
+
+   //categories 
+
+   function categories(){
+ $admin =  Session::get('admin');
+   if ($admin) {
+       return view('categories',['name'=>$admin->name]);
    }else{
     return redirect('admin-login');
    }
