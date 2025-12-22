@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Admin;
+use App\Models\Categorie;
 
 
 class AdminController extends Controller
@@ -55,11 +56,52 @@ class AdminController extends Controller
    //categories 
 
    function categories(){
- $admin =  Session::get('admin');
+       $admin =  Session::get('admin');
+       $categorie = Categorie::get();
    if ($admin) {
-       return view('categories',['name'=>$admin->name]);
+       return view('categories',['name'=>$admin->name,'categories'=>$categorie]);
    }else{
     return redirect('admin-login');
    }
+   }
+
+
+   
+   //logout
+
+   function logout(){
+ Session::forget('admin');
+  return redirect('admin-login');
+   }
+
+
+
+   //add categories
+
+
+
+
+   function addCategory(Request $req){
+     $validation =$req->validate([
+        "category"=>"required | min:3",
+    ]); 
+    $admin = Session::get('admin');
+    $categorie = new Categorie();
+    $categorie->name = $req->category;
+    $categorie->creator = $admin->name;
+    if ($categorie->save()) {
+       Session::flash('category','Success : Category'.$req->category.'Added .');
+    }
+    return redirect("admin-categories");
+   }
+
+
+   function deleteCategory($id){
+       $name =Categorie::find($id);
+    $del = Categorie::find($id)->delete();
+    if ($del) {
+           Session::flash('deleted',' Category '.$name->name.' deleted .');
+        return redirect('admin-categories');
+    }
    }
 }

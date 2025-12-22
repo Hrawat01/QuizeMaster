@@ -7,7 +7,7 @@
                 <a class="text-gray-700 hover:text-blue-500" href="">Quiz</a>
                 <a class="text-gray-700 hover:text-blue-500" href="">Wellcome,{{$name}}</a>
                 {{-- <a class="text-gray-700 hover:text-blue-500" href="">Wellcome,</a> --}}
-                <a class="text-gray-700 hover:text-blue-500" href="">Logout</a>
+                <a class="text-gray-700 hover:text-blue-500" href="/admin-logout">Logout</a>
             </div>
         </div>
     </nav>
