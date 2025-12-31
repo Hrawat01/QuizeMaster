@@ -28,7 +28,9 @@
                     <div class="mb-5">
                          
                          <input type="text" placeholder="Enter the Quiz name" name="quiz"
-                         class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-[50vh]" />
+                         class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-[50vh]" 
+                         required
+                         />
                      
                     </div>
 
@@ -46,7 +48,7 @@
                      
                     </div>
                 
-                    <button class="w-[100%] bg-blue-600 mt-1 rounded-2xl p-1" type="submit">Add</button>
+                    <button class="w-[70%] bg-blue-600 mt-1 rounded-2xl p-1" type="submit">Add</button>
                </form>
 
 
@@ -62,8 +64,12 @@
                <form action="add-mcq" method="post" class="space-y-4">
                 <div>
                     @csrf
+
                     <textarea type="text" placeholder="Enter the question name" name="question"
-                     class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" ></textarea>
+                     class="border px-5 border-gray-400 rounded-xl py-2 h-[13vh] focus:outline-none w-full" ></textarea>
+                     @error("question")
+                          <div class="text-red-600 text-sm">{{$message}} </div>
+                     @enderror
                 </div>
 
                 {{-- options --}}
@@ -72,21 +78,38 @@
                     <input type="text" placeholder="Enter the first option" name="a"
                      class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
+                  @error("a")
+                          <div class="text-red-600 text-sm">{{$message}} </div>
+                     @enderror
+
 
                 <div>
                     <input type="text" placeholder="Enter the second option" name="b"
                      class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
+                  @error("b")
+                          <div class="text-red-600 text-sm">{{$message}} </div>
+                     @enderror
+
 
                 <div>
                     <input type="text" placeholder="Enter the third option " name="c"
                      class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
+                  @error("c")
+                          <div class="text-red-600 text-sm">{{$message}} </div>
+                     @enderror
+
 
                 <div>
                     <input type="text" placeholder="Enter the fourth option " name="d"
                      class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
+                  @error("d")
+                          <div class="text-red-600 text-sm">{{$message}} </div>
+                     @enderror
+
+                
                 <div>
                     <select name="correct_ans"
                      class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full font-bold" >
@@ -96,8 +119,13 @@
                      <option value="c">C</option>
                      <option value="d">D</option>
                 </select>
+                  @error("correct_ans")
+                          <div class="text-red-600 text-sm">{{$message}} </div>
+                     @enderror
+
                  <button name="submit" value="add-more" class="w-[100%] hover:bg-blue-500 text-white font-bold bg-blue-600 mt-3 rounded-2xl p-2" type="submit">Add More</button>
                  <button name="submit" value="done" class="w-[100%] hover:bg-green-500 text-white font-bold bg-green-600 mt-3 rounded-2xl p-2" type="submit">Add and Submit</button>
+                 <button name="submit" value="back" class="w-[100%] hover:bg-red-500 text-white font-bold bg-red-600 mt-3 rounded-2xl p-2" type="submit">Finish and Leave</button>
                 </div>
 
 
