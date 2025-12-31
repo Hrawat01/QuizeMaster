@@ -7,7 +7,7 @@
     <title>Quiz Page</title>
      @vite('resources/css/app.css')
 </head>
-<body class="overflow-hidden">
+<body class="">
     <x-navbar name={{$name}}> </x-navbar>
      <div class="flex flex-col min-h-[98vh] w-full items-center pt-6">
 
@@ -59,46 +59,45 @@
                <h2 class="text-2xl text-center text-gray-800 mb-6 font-bold">Add MCQs</h2>
 
                {{-- form --}}
-               <form action="" method="get" class="space-y-4">
-
-
+               <form action="add-mcq" method="post" class="space-y-4">
                 <div>
-                    <textarea type="text" placeholder="Enter the question name" name="quiz"
-                     class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-full" ></textarea>
+                    @csrf
+                    <textarea type="text" placeholder="Enter the question name" name="question"
+                     class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" ></textarea>
                 </div>
 
                 {{-- options --}}
 
                 <div>
-                    <input type="text" placeholder="Enter the first option" name="quiz"
-                     class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
+                    <input type="text" placeholder="Enter the first option" name="a"
+                     class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
 
                 <div>
-                    <input type="text" placeholder="Enter the second option" name="quiz"
-                     class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
+                    <input type="text" placeholder="Enter the second option" name="b"
+                     class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
 
                 <div>
-                    <input type="text" placeholder="Enter the third option " name="quiz"
-                     class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
+                    <input type="text" placeholder="Enter the third option " name="c"
+                     class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
 
                 <div>
-                    <input type="text" placeholder="Enter the fourth option " name="quiz"
-                     class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
+                    <input type="text" placeholder="Enter the fourth option " name="d"
+                     class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full" />
                 </div>
                 <div>
-                    <select name="right ans"
-                     class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none w-full" >
-                     <option selected value="">Select Right Answer </option>
-                     <option value="">A</option>
-                     <option value="">B</option>
-                     <option value="">C</option>
-                     <option value="">D</option>
+                    <select name="correct_ans"
+                     class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-full font-bold" >
+                     <option value="">Select Right Answer </option>
+                     <option value="a">A</option>
+                     <option value="b">B</option>
+                     <option value="c">C</option>
+                     <option value="d">D</option>
                 </select>
-                 <button class="w-[100%] hover:bg-blue-500 text-white font-bold bg-blue-600 mt-3 rounded-2xl p-2" type="submit">Add More</button>
-                 <button class="w-[100%] hover:bg-green-500 text-white font-bold bg-green-600 mt-3 rounded-2xl p-2" type="submit">Add and Submit</button>
+                 <button name="submit" value="add-more" class="w-[100%] hover:bg-blue-500 text-white font-bold bg-blue-600 mt-3 rounded-2xl p-2" type="submit">Add More</button>
+                 <button name="submit" value="done" class="w-[100%] hover:bg-green-500 text-white font-bold bg-green-600 mt-3 rounded-2xl p-2" type="submit">Add and Submit</button>
                 </div>
 
 

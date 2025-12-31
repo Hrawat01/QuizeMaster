@@ -1,4 +1,4 @@
- <nav class="bg-gray-100 shadow-lg px-5 py-5 m-2">
+ <nav class="border border-gray-300 rounded bg-gray-100 shadow-lg px-5 py-5 m-2">
         <div class="flex justify-between item-center">
             <div class="font-bold text-[20px] hover:text-green-500">Quiz System</div>
             <div class="flex gap-5">
