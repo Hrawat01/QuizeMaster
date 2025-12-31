@@ -9,7 +9,7 @@
 </head>
 <style>
     .glowbtn:hover{
-        box-shadow: 0 0 25px rgba(212, 142, 183, 0.7);
+        box-shadow: 0 10px 25px rgba(186, 135, 165, 0.7);
     }
 </style>
 <body class=" bg-gray-100 flex items-center justify-center min-h-screen ">
