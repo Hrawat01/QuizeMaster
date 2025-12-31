@@ -37,19 +37,19 @@
 
                     @csrf
 
-                    <div class="mb-5">
+                    <div class="mb-5 w-full ">
 
                          <input type="text" placeholder="Enter the categories name" name="category"
-                              class="border px-11 border-gray-400 rounded-xl py-2 focus:outline-none " />
+                              class="border px-5 border-gray-400 rounded-xl py-2 focus:outline-none w-[100%]" />
 
                          @error('category')
-                         <div class="text-red-500 w-[80%] flex flex-wrap">{{$message}}</div>
+                         <div class="absolute text-red-400 w-[80%] flex flex-wrap font-thin text-xl">{{$message}}</div>
                          @enderror
 
 
                     </div>
 
-                    <button class="w-[80%] bg-blue-600 mt-1 rounded-2xl p-1 hover:bg-blue-500"
+                    <button class="bg-blue-600 mt-1 rounded-2xl p-1 hover:bg-blue-500 w-full"
                          type="submit">Add</button>
                </form>
 

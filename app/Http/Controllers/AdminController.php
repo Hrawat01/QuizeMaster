@@ -142,6 +142,19 @@ class AdminController extends Controller
 
 //    add mcqs
 function addMCQs(Request $req){
+    if($req->submit=='back'){
+        Session::forget('quizDetails');
+        return redirect('/add-quiz');
+    }
+    $req->validate([
+        "question" => "required | min:3",
+        "a" => "required",
+        "b" => "required",
+        "c" => "required",
+        "d" => "required",
+        "correct_ans" => "required"
+        
+    ]);
     $mcq = new Mcq();
     $quiz = Session::get('quizDetails');
     $admin = Session::get('admin');
