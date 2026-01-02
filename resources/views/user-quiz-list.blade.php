@@ -31,7 +31,7 @@
                         <div class="flex justify-between ">
                             <span class="w-[33%]">{{ $item->id }}</span>
                             <span class="w-[33%]">{{ $item->name }}</span>
-                            <span > <a class="text-green-500 font-bold" href="/show-quiz/{{$item->id}}">Attempt Quiz
+                            <span > <a class="text-green-500 font-bold" href="/start-quiz/{{$item->id}}/{{$item->name}}">Attempt Quiz
                                    </a></span>
                         </div>
                     </li>

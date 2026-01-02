@@ -4,7 +4,8 @@
             <div class="flex gap-5">
                 <a class="text-green-800 hover:text-blue-500" href="/">Home</a>
                 <a class="text-green-800 hover:text-blue-500" href="/admin-categories">Categories</a>
-                <a class="text-green-800 hover:text-blue-500" href="">Login</a>
+                <a class="text-green-800 hover:text-blue-500" href="/admin-login">Login</a>
+                <a class="text-green-800 hover:text-blue-500" href="/user-signup">Signup</a>
                 <a class="text-green-800 hover:text-blue-500" href="/admin-logout">Blog</a>
             </div>
         </div>
