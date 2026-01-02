@@ -13,11 +13,22 @@
      <x-navbar name={{$name}}> </x-navbar>
 
      @if (Session('category'))
-     <div class="bg-green-500 text-white pl-4">{{Session('category')}}</div>
+     <div class="bg-green-500 text-white pl-4 flash-message">{{Session('category')}}</div>
      @endif
      @if (Session('deleted'))
-     <div class="bg-red-500 text-white pl-4">{{Session('deleted')}}</div>
+     <div class="bg-red-500 text-white pl-4 flash-message">{{Session('deleted')}}</div>
      @endif
+     
+<script>
+    setTimeout(() => {
+        let flashes = document.querySelectorAll('.flash-message');
+       flashes.forEach(flash => {
+            flash.style.transition = "opacity 0.5s ease";
+            flash.style.opacity = 0;
+            setTimeout(() => flash.remove(), 500); 
+        });
+    }, 3000); // 3 seconds
+</script>
 
 
      <div class="flex flex-col min-h-[98%] items-center pt-8">
@@ -73,13 +84,16 @@
                               <li class="w-[30px]">{{$category->id}}</li>
                               <li class="w-[70px]">{{$category->name}}</li>
                               <li class="w-[70px]">{{$category->creator}}</li>
-                              <li class="w-[40px]">
-                                   <a href="category/delete/{{$category->id}}">
+                              <li class="w-[40px] flex">
+                                   <a  href="category/delete/{{$category->id}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                              width="24px" fill="#000000">
                                              <path
                                                   d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
-                                        </svg>
+                                        </svg> 
+                                   </a>
+                                   <a  href="quiz-list/{{$category->id}}/{{$category->name}}">
+                                           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#0000F5"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Z"/></svg>
                                    </a>
                               </li>
                          </ul>

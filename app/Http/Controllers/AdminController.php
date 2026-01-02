@@ -96,7 +96,7 @@ class AdminController extends Controller
         $categorie->name = $req->category;
         $categorie->creator = $admin->name;
         if ($categorie->save()) {
-            Session::flash('category','Success : Category'.$req->category.'Added .');
+            Session::flash('category','Success : Category '.$req->category.' Added .');
         }
         return redirect("admin-categories");
     }
@@ -118,6 +118,7 @@ class AdminController extends Controller
 
    function addQuiz(){
        $admin =  Session::get('admin');
+       $totalMCQs=0;
        if ($admin) {
        $categorie = Categorie::get();
 
@@ -131,10 +132,15 @@ class AdminController extends Controller
         if ($quiz->save()) {
             Session::put('quizDetails',$quiz);
         }
+    }else{
+         $quiz = Session::get('quizDetails');
+         if ($quiz) {
+            $totalMCQs = MCQ::where('quiz_id',$quiz->id)->count();
+         }
     }
 
-       return view('add-quiz',['name'=>$admin->name,'categories'=>$categorie]);
-   }else{
+       return view('add-quiz',['name'=>$admin->name,'categories'=>$categorie , 'totalMCQs'=>$totalMCQs]);
+    }else{
     return redirect('admin-login');
    }
    }
@@ -176,5 +182,32 @@ function addMCQs(Request $req){
         return redirect('/add-quiz');
      }
     }
+    }
+
+
+
+    // show quiz 
+    function showQuiz($id){
+         $admin =  Session::get('admin');
+       $mcqs = Mcq::where('quiz_id',$id)->get();
+   if ($admin) {
+       return view('show-quiz',['name'=>$admin->name,'mcqs'=>$mcqs]);
+   }else{
+    return redirect('admin-login');
+   }
+    }
+
+
+
+
+    // list the quiz 
+    function quizList($id ,$category){
+        $admin =  Session::get('admin');
+        if ($admin) {
+       $quizData = Quizze::where('category_id',$id)->get();
+       return view('quiz-list',['name'=>$admin->name,'quizData'=>$quizData, 'category'=>$category]);
+   }else{
+    return redirect('admin-login');
+   }
     }
 }
