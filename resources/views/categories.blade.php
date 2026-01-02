@@ -13,11 +13,22 @@
      <x-navbar name={{$name}}> </x-navbar>
 
      @if (Session('category'))
-     <div class="bg-green-500 text-white pl-4">{{Session('category')}}</div>
+     <div class="bg-green-500 text-white pl-4 flash-message">{{Session('category')}}</div>
      @endif
      @if (Session('deleted'))
-     <div class="bg-red-500 text-white pl-4">{{Session('deleted')}}</div>
+     <div class="bg-red-500 text-white pl-4 flash-message">{{Session('deleted')}}</div>
      @endif
+     
+<script>
+    setTimeout(() => {
+        let flashes = document.querySelectorAll('.flash-message');
+       flashes.forEach(flash => {
+            flash.style.transition = "opacity 0.5s ease";
+            flash.style.opacity = 0;
+            setTimeout(() => flash.remove(), 500); 
+        });
+    }, 3000); // 3 seconds
+</script>
 
 
      <div class="flex flex-col min-h-[98%] items-center pt-8">

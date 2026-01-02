@@ -57,7 +57,12 @@
 
 
                @else
-               <span class="text-green-500 font-bold">Quiz : {{Session('quizDetails')->name}}</span>
+               <span class="text-green-500 font-bold">Quiz : {{Session('quizDetails')->name}}</span><br>
+               <span class="text-green-500 font-bold text-sm">Total MCQs : {{$totalMCQs}}
+                    @if ($totalMCQs>0)
+                         <a class="text-yellow-300" href="/show-quiz/{{Session('quizDetails')->id}}">Show MCQs</a>
+                    @endif
+               </span>
                <h2 class="text-2xl text-center text-gray-800 mb-6 font-bold">Add MCQs</h2>
 
                {{-- form --}}
