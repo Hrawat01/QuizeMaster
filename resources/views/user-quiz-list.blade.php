@@ -22,6 +22,7 @@
                     <ul class="flex justify-between">
                         <li class="w-[60px]">Quiz Id</li>
                         <li class="w-[60px]">Name</li>
+                        <li class="w-[60px]">Count</li>
                         <li class="w-[60px]">Action</li>
                     </ul>
                 </li>
@@ -31,6 +32,7 @@
                         <div class="flex justify-between ">
                             <span class="w-[33%]">{{ $item->id }}</span>
                             <span class="w-[33%]">{{ $item->name }}</span>
+                            <span class="w-[28%]">{{ $item->mcqs_count }}</span>
                             <span > <a class="text-green-500 font-bold" href="/start-quiz/{{$item->id}}/{{$item->name}}">Attempt Quiz
                                    </a></span>
                         </div>

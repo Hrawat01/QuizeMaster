@@ -18,13 +18,15 @@ class UserController extends Controller
 
     function userQuizList($id,$category){
         
-       $quizData = Quizze::where('category_id',$id)->get();
+      $quizData = Quizze::withCount('mcqs')->where('category_id',$id)->get();
        return view('user-quiz-list',['quizData'=>$quizData, 'category'=>$category]);
    
     }
 
     function startQuiz($id,$name){
-        return Mcq::where('quiz_id',$id)->get();
+        $quizCount=  Mcq::where('quiz_id',$id)->count();
+        $quizName = $name;
+        return view('start-quiz',['quizCount'=>$quizCount,'quizName'=>$quizName]);
     }
 
 
