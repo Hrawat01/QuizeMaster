@@ -8,7 +8,7 @@
                 <a class="text-green-800 hover:text-blue-500" href="/admin-login">Welcome , {{ Session('user')->name }}</a>
                 <a class="text-green-800 hover:text-blue-500" href="/user-logout">Logout</a>
                 @else
-                <a class="text-green-800 hover:text-blue-500" href="/admin-login">Login</a>
+                <a class="text-green-800 hover:text-blue-500" href="/user-login">Login</a>
                 <a class="text-green-800 hover:text-blue-500" href="/user-signup">Signup</a>
                 @endif
 

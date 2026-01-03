@@ -28,6 +28,11 @@ class UserController extends Controller
 
     function startQuiz($id,$name){
         $quizCount=  Mcq::where('quiz_id',$id)->count();
+        $mcqs = Mcq::where('quiz_id',$id)->get();
+
+
+        Session::put('firstMCQ',$mcqs[0]);
+
         $quizName = $name;
         return view('start-quiz',['quizCount'=>$quizCount,'quizName'=>$quizName]);
     }
@@ -65,6 +70,38 @@ function userSignupQuiz(){
     Session::put('quiz-url', url()->previous());
     return view('user-signup');
 
+}
+
+
+ function userLogin(Request $req){
+        $validate = $req->validate([
+            'email'=>'required | email ',
+            'password'=>'required ',
+        ]);
+      $user = User::where('email',$req->email)->first();
+      if (!$user || !Hash::check($req->password, $user->password)) {
+    return "user not valid";  
+    }
+        if ($user) {
+            Session::put('user', $user);
+            if (Session('quiz-url')) {
+               $url= Session::get('quiz-url');
+                Session::forget('quiz-url');
+                return redirect($url);
+            }
+            return redirect('/');
+            
+    }
+}
+
+function userLoginQuiz(){
+    Session::put('quiz-url', url()->previous());
+    return view('user-login');  
+}
+
+function mcq($id,$name){
+ 
+    return view('mcq-page');
 }
 
 }

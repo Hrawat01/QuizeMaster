@@ -22,14 +22,20 @@
 
 
         @if (Session('user'))
-              <a href="/user-signup"
+              <a href="/mcq/{{ Session('firstMCQ')->id }}/{{ $quizName }}"
             class=" p-4 bg-blue-600 text-white font-semibold rounded-xl py-2 hover:bg-blue-700 transition duration-200">
             Start Quiz
         </a>
         @else
         <a href="/user-signup-quiz"
+        class="mb-6 p-4 bg-blue-600 text-white font-semibold rounded-xl py-2 hover:bg-blue-700 transition duration-200">
+        Signup
+    </a>
+
+
+        <a href="/user-login-quiz"
         class=" p-4 bg-blue-600 text-white font-semibold rounded-xl py-2 hover:bg-blue-700 transition duration-200">
-        Login/Signup
+        Login
     </a>
     @endif
 
