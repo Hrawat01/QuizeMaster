@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Categories</title>
     @vite('resources/css/app.css')
 </head>
+
 <body>
     <x-user-nav></x-user-nav>
 
@@ -14,15 +16,24 @@
         <h1 class="text-4xl text-green-700 font-bold text-center mb-6">
             Category Name :{{ $quizName }}
         </h1>
-<h2 class="text-lg text-green-700 font-bold text-center mb-6">This Quiz contain {{ $quizCount }} question and no limit to attempt this Quiz</h2>
-<div class=" text-2xl text-green-700 font-bold text-center mb-6">Good Luck !</div>
+        <h2 class="text-lg text-green-700 font-bold text-center mb-6">This Quiz contain {{ $quizCount }} question and no
+            limit to attempt this Quiz</h2>
+        <div class=" text-2xl text-green-700 font-bold text-center mb-6">Good Luck !</div>
 
 
-    <a href="/user-signup"
-                    class=" p-4 bg-blue-600 text-white font-semibold rounded-xl py-2 hover:bg-blue-700 transition duration-200">
-                    Login/Signup
+        @if (Session('user'))
+              <a href="/user-signup"
+            class=" p-4 bg-blue-600 text-white font-semibold rounded-xl py-2 hover:bg-blue-700 transition duration-200">
+            Start Quiz
+        </a>
+        @else
+        <a href="/user-signup-quiz"
+        class=" p-4 bg-blue-600 text-white font-semibold rounded-xl py-2 hover:bg-blue-700 transition duration-200">
+        Login/Signup
     </a>
-      
+    @endif
+
     </div>
 </body>
+
 </html>
