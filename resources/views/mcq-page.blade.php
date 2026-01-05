@@ -14,47 +14,48 @@
 
         <!-- Header -->
         <h1 class="text-4xl font-bold text-green-700 mb-2 text-center">
-            Java MCQs
+            {{$quizName}}
         </h1>
 
         <h2 class="text-xl font-semibold text-green-600 mb-8 text-center">
-            Question Number : 1
+            Question Number : {{Session::get('currentQuiz')['currentMcq']}} / {{Session::get('currentQuiz')['totalMcq']}}
         </h2>
 
         <!-- Question Card -->
         <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-5 text-gray-800">
 
             <h1 class="text-2xl font-bold mb-5">
-                Q1. What is Java?
+               {{$mcqData->question}}
             </h1>
 
-            <form class="space-y-4">
-
-                <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300">
-                    <input type="radio" name="answer" >
-                    <span class="text-lg">Programming language</span>
+            <form action="/submit-next/{{$mcqData->id}}" method="post" class="space-y-4">
+                @csrf
+                <label
+                 class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300 ">
+                    <input type="radio" name="answer">
+                    <span class="text-lg">{{$mcqData->a}}</span>
                 </label>
 
                 <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300">
                     <input type="radio" name="answer" >
-                    <span class="text-lg">Operating system</span>
+                    <span class="text-lg">{{$mcqData->b}}</span>
                 </label>
 
                 <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300">
                     <input type="radio" name="answer">
-                    <span class="text-lg">Database software</span>
+                    <span class="text-lg">{{$mcqData->c}}</span>
                 </label>
               
               
                 <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300">
                     <input type="radio" name="answer" >
-                    <span class="text-lg">Database software</span>
+                    <span class="text-lg">{{$mcqData->d}}</span>
                 </label>
 
+                <br>
+                
+                <button type="submit" class="w-full rounded-2xl font-bold  text-center bg-green-600 p-3">Submit & Next</button>
             </form>
-            <br>
-
-            <button class="w-full rounded-2xl font-bold  text-center bg-green-600 p-3">Submit & Next</button>
         </div>
     </div>
     <x-footer-user></x-footer-user>
