@@ -114,13 +114,17 @@ function mcq($id,$name){
         $currentQuiz['quizId']=Session::get('firstMCQ')->quiz_id;
         $currentQuiz['recordId']=$record->id;
         Session::put('currentQuiz',$currentQuiz);
+        // return $currentQuiz;
         $mcqData= Mcq::find($id);
-        
         return view('mcq-page',['quizName'=>$name,'mcqData'=>$mcqData]);
     }else{
         return "record not saved";
     }
 }
+
+
+
+
 
 function submitNext(Request $req,$id){
 $currentQuiz= Session::get('currentQuiz');

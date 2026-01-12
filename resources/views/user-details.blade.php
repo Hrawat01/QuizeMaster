@@ -29,7 +29,14 @@
                          <ul class="flex justify-between">
                               <li>{{$key+1}}</li>
                               <li>{{$record->name}}</li>
-                              <li>{{$record->status}}</li>
+                              <li>
+                                   @if ($record->status==2)
+                                        <span class="text-green-500">Completed</span>
+                                        @else
+                                        
+                                        <span class="text-orange-500">Not Completed</span>
+                                   @endif
+                              </li>
                          </ul>
                     </li>
                     @endforeach
