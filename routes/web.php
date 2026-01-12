@@ -12,6 +12,7 @@ Route::post('user-signup',[UserController::class,'userSignup']);
 Route::get('user-logout',[UserController::class,'userLogout']);
 Route::get('user-signup-quiz',[UserController::class,'userSignupQuiz']);
 
+Route::get('categories-list',[UserController::class,'categories']);
 
 Route::get('user-login',function(){
     if (!Session()->has('user')) {
