@@ -101,6 +101,8 @@ function userLoginQuiz(){
     return view('user-login');  
 }
 
+
+
 function mcq($id,$name){
     $record = new Record();
     $record->user_id= Session::get('user')->id;
@@ -125,6 +127,11 @@ function mcq($id,$name){
 
 
 
+
+
+
+
+// submit and next
 
 function submitNext(Request $req,$id){
 $currentQuiz= Session::get('currentQuiz');
@@ -186,14 +193,25 @@ if ($mcqData) {
 
 
 
+
+// user quiz is completed or not
+
 function userDetails(){
     $quizRecord = Record::withQuiz()->where('user_id',Session::get('user')->id)->get();
     return view('user-details',['quizRecord'=>$quizRecord]);
 }
 
 
+
+
+//  searching
+
 function searchQuiz(Request $req){
-    $quizData = Quizze::withCount('Mcqs')->where('name','like','%'.$req->search.'%')->get();
+    $quizData = Quizze::withCount('Mcqs')->where('name','like','%'.$req->search.'%')->get(); //use withCount because on ui count is not visible
     return view('quiz-search',['quizData'=>$quizData,'quiz'=>$req->search]);
 }
+
+
+
+
 }
