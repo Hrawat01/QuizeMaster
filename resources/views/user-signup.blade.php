@@ -128,7 +128,7 @@
             <!-- Footer -->
             <div class="text-center mt-6 text-sm text-gray-600">
                 Already have an account?
-                <a href="/admin-login" class="text-blue-600 font-semibold hover:underline">
+                <a href="/user-login" class="text-blue-600 font-semibold hover:underline">
                     Login
                 </a>
             </div>

@@ -32,23 +32,23 @@
                 @csrf
                 <label
                  class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300 ">
-                    <input type="radio" name="answer">
+                    <input type="radio" name="option" value="a">
                     <span class="text-lg">{{$mcqData->a}}</span>
                 </label>
 
                 <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300">
-                    <input type="radio" name="answer" >
+                    <input type="radio" name="option"  value="b">
                     <span class="text-lg">{{$mcqData->b}}</span>
                 </label>
 
                 <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300">
-                    <input type="radio" name="answer">
+                    <input type="radio" name="option" value="c">
                     <span class="text-lg">{{$mcqData->c}}</span>
                 </label>
               
               
                 <label class="flex items-center gap-3 p-4 border rounded-xl cursor-pointer hover:bg-green-50 border-green-300">
-                    <input type="radio" name="answer" >
+                    <input type="radio" name="option"  value="d">
                     <span class="text-lg">{{$mcqData->d}}</span>
                 </label>
 

@@ -5,7 +5,7 @@
                 <a class="text-green-800 hover:text-blue-500" href="/">Home</a>
                 <a class="text-green-800 hover:text-blue-500" href="/admin-categories">Categories</a>
                 @if (Session::has('user'))
-                <a class="text-green-800 hover:text-blue-500" href="/admin-login">Welcome , {{ Session('user')->name }}</a>
+                <a class="text-green-800 hover:text-blue-500" href="/user-details">Welcome , {{ Session('user')->name }}</a>
                 <a class="text-green-800 hover:text-blue-500" href="/user-logout">Logout</a>
                 @else
                 <a class="text-green-800 hover:text-blue-500" href="/user-login">Login</a>

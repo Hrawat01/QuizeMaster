@@ -18,6 +18,7 @@ Route::get('user-login-quiz',[UserController::class,'userLoginQuiz']);
 
 Route::get('mcq/{id}/{name}',[UserController::class,'mcq']);
 Route::post('submit-next/{id}',[UserController::class,'submitNext']);
+Route::get('user-details',[UserController::class, 'userDetails']);
 
 // Route::get('/', function () {
 //     return view('welcome');
