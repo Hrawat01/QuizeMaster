@@ -47,7 +47,7 @@ class AdminController extends Controller
    function dashboard(){
    $admin =  Session::get('admin');
    if ($admin) {
-     $users = User::orderBy('id ','desc')->paginate(3);
+     $users = User::orderBy('id','desc')->paginate(3);
        return view('admin',['name'=>$admin->name,'users'=>$users]);
    }else{
     return redirect('admin-login');
