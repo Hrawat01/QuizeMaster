@@ -42,7 +42,11 @@
                     @endforeach
                </ul>
           </div>
-        </div>
+
+          <div class="w-[50%] flex flex-col mt-4 ">
+               {{$quizRecord->links()}}
+          </div>
+     </div>
         <x-footer-user></x-footer-user>
     </div>
 </body>

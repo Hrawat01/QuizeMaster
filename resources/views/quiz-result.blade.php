@@ -40,6 +40,9 @@
                     @endforeach
                </ul>
           </div>
+
+          <a href="/" class="bg-green-400 text-gray-700 px-4 py-2 rounded-xl mt-5">Back</a>
+
         </div>
         <x-footer-user></x-footer-user>
     </div>

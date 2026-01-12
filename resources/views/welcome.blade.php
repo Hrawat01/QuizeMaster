@@ -12,10 +12,29 @@
 <body>
      <x-user-nav></x-user-nav>
      <div class="flex flex-col min-h-screen items-center bg-gray-100 ">
+
+         
           <h1 class="text-3xl text-green-900 font-bold p-5">Check Your Skills</h1>
+
+
+          {{-- categories search  --}}
+          <form action="categories-search" class="absolute right-8" method="get">
+          <input class="border border-gray-300 shadow rounded-xl p-1 pl-2" type="text" placeholder="Search Categories..." name="searchcategory">
+          <button class="absolute right-2 top-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960"
+                                   width="24px" fill="#48752C">
+                                   <path
+                                        d="m788.48-81.56-256.95-257.4q-29.31 20.74-70.83 33.4-41.53 12.65-87.09 12.65-120.53 0-204.53-84.03-83.99-84.03-83.99-204.61 0-120.58 84.02-204.49 84.03-83.92 204.61-83.92 120.58 0 204.5 84 83.91 83.99 83.91 204.53 0 46.13-11.93 85.43-11.94 39.3-33.68 69.61l258.39 258.96-86.43 85.87Zm-415.1-334.31q70.24 0 118.02-47.54 47.77-47.55 47.77-117.79 0-70.25-47.77-118.02Q443.62-747 373.38-747q-70.25 0-117.79 47.78-47.55 47.77-47.55 118.02 0 70.24 47.55 117.79 47.54 47.54 117.79 47.54Z" />
+                              </svg>
+          </button>
+          </form>
+
+
           <div class="w-full max-w-md ">
                <div class="relative">
-                    <form action="search-quiz" method="get">
+
+                    {{-- quiz search  --}}
+                    <form action="search-quiz" method="get" >
                          <input class="w-full px-4 py-3 text-gray-700 border border-gray-300 rounded-2xl shadow"
                               type="text" placeholder="Search Quiz..." name="search">
                          <button class="absolute right-2 top-4">
@@ -29,9 +48,9 @@
                </div>
           </div>
           <div class="w-[50%]"><br><br>
-               <h1 class="text-2xl font-bold text-green-900 text-center my-3">Category List</h1><br>
+               <h1 class="text-2xl font-bold text-green-900 text-center my-3">Top Categories</h1><br>
 
-               <ul class="border border-gray-200 overflow-hidden">
+               <ul class="border border-gray-200 overflow-hidden ">
                     <li class="font-bold p-2">
                          <ul class="flex justify-between">
                               <li class="w-[30px]">S.No</li>
@@ -42,7 +61,7 @@
                     </li>
 
                     @foreach ($categories as $key=>$category)
-                    <li class="even:bg-gray-200 p-2">
+                    <li class="even:bg-gray-200 p-5">
                          <ul class="flex justify-between">
                               <li class="w-[30px]">{{$key+1}}</li>
                               <li class="w-[70px]">{{$category->name}}</li>
@@ -61,6 +80,39 @@
                     @endforeach
                </ul>
           </div>
+
+
+
+          {{-- Top Quiz --}}
+          <div class="w-[50%]  mt-10 mb-5">
+                <h1 class="text-2xl font-bold text-green-900 text-center my-2">Top Quiz</h1><br>
+               <ul class="border border-gray-200">
+                    <li class="font-bold p-2 bg-gray-100">
+                         <ul class="flex justify-between">
+                              <li class="w-[60px]">Quiz Id</li>
+                              <li class="w-[60px]">Name</li>
+                              <li class="w-[60px]">Count</li>
+                              <li class="w-[60px]">Action</li>
+                         </ul>
+                    </li>
+
+                    @foreach ($quizData as $key=>$item)
+                    <li class="even:bg-gray-200 p-2">
+                         <div class="flex justify-between ">
+                              <span class="w-[33%]">{{ $key+1 }}</span>
+                              <span class="w-[33%]">{{ $item->name }}</span>
+                              <span class="w-[28%]">{{ $item->mcqs_count }}</span>
+                              <span> <a class="text-green-500 font-bold"
+                                        href="/start-quiz/{{$item->id}}/{{$item->name}}">Attempt Quiz
+                                   </a></span>
+                         </div>
+                    </li>
+                    @endforeach
+               </ul>
+          </div>
+
+
+
      </div>
      <x-footer-user></x-footer-user>
      </div>

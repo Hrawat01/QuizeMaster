@@ -32,6 +32,7 @@ Route::get('user-signup',function(){
 Route::post('user-login',[UserController::class,'userLogin']);
 Route::get('user-login-quiz',[UserController::class,'userLoginQuiz']);
 Route::get('search-quiz',[UserController::class,'searchQuiz']);
+Route::get('categories-search',[UserController::class,'searchCategories']);
 
 
 Route::middleware('CheckAuth')->group(function(){
@@ -46,9 +47,15 @@ Route::middleware('CheckAuth')->group(function(){
 // });
 
 
-Route::view('admin-login','admin-login');
+// Route::view('admin-login','admin-login');
 
-
+Route::get('admin-login',function(){
+    if (!Session()->has('admin')) {
+        return view('admin-login');
+    }else{
+        return redirect('dashboard');
+    }
+});
 
 
 Route::post('admin-login',[AdminController::class,'login']);
@@ -63,3 +70,4 @@ Route::post('add-mcq',[AdminController::class,'addMCQs']);
 
 Route::get('show-quiz/{id}',[AdminController::class,'showQuiz']);
 Route::get('quiz-list/{id}/{category}',[AdminController::class,'quizList']);
+

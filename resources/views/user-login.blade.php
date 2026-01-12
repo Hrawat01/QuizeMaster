@@ -80,7 +80,7 @@
 
             <!-- Footer -->
             <div class="text-center mt-6 text-sm text-gray-600">
-                <a class="mt-6 text-sm text-gray-600" href="/user-signup">Already have an account?</a><br>
+                <a class="mt-6 text-sm text-gray-600" href="/user-signup">Don't have an account?</a><br><br>
                 Forgot password?
                 <a href="#" class="text-blue-600 font-semibold hover:underline">
                     Contact Super Admin

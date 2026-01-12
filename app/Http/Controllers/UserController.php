@@ -15,10 +15,10 @@ use Session;
 class UserController extends Controller
 {
     function welcome(){
-
-        $categories = Categorie::withCount('quizzes')->get();
+         $categories = Categorie::withCount('quizzes')->orderBy('quizzes_count','desc')->take(5)->get(); //quizzes_count come from withCount
         // $categories = Categorie::get();
-           return view('welcome', ['categories' => $categories]);
+           $quizData = Quizze::withCount('Records')->orderBy('records_count','desc')->take(5)->get();
+           return view('welcome', ['categories' => $categories,'quizData'=>$quizData]);
     }
 
 
@@ -208,7 +208,7 @@ if ($mcqData) {
 // user quiz is completed or not
 
 function userDetails(){
-    $quizRecord = Record::withQuiz()->where('user_id',Session::get('user')->id)->get();
+    $quizRecord = Record::withQuiz()->where('user_id',Session::get('user')->id)->paginate(5);
     return view('user-details',['quizRecord'=>$quizRecord]);
 }
 
@@ -222,6 +222,11 @@ function searchQuiz(Request $req){
     return view('quiz-search',['quizData'=>$quizData,'quiz'=>$req->search]);
 }
 
+
+function searchCategories(Request $req){
+    $quizData = Categorie::where('name','like','%'.$req->searchcategory.'%')->get(); //use withCount because on ui count is not visible
+    return view('categories-search',['quizData'=>$quizData,'quiz'=>$req->searchcategory]);
+}
 
 
 

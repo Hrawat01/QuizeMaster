@@ -12,4 +12,8 @@ class Quizze extends Model
     function mcqs(){
         return $this->hasMany(Mcq::class, 'quiz_id');
     }
+
+    function Records(){
+        return $this->hasMany(Record::class,'quiz_id'); 
+    }
 }
