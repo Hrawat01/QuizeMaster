@@ -3,7 +3,7 @@
             <div class="font-bold text-[24px] text-green-800 hover:text-blue-500 +">Quiz System</div>
             <div class="flex gap-5">
                 <a class="text-green-800 hover:text-blue-500" href="/">Home</a>
-                <a class="text-green-800 hover:text-blue-500" href="/admin-categories">Categories</a>
+                <a class="text-green-800 hover:text-blue-500" href="/">Categories</a>
                 @if (Session::has('user'))
                 <a class="text-green-800 hover:text-blue-500" href="/user-details">Welcome , {{ Session('user')->name }}</a>
                 <a class="text-green-800 hover:text-blue-500" href="/user-logout">Logout</a>
@@ -12,7 +12,7 @@
                 <a class="text-green-800 hover:text-blue-500" href="/user-signup">Signup</a>
                 @endif
 
-                <a class="text-green-800 hover:text-blue-500" href="/admin-logout">Blog</a>
+                <a class="text-green-800 hover:text-blue-500" href="/">Blog</a>
             </div>
         </div>
     </nav>
