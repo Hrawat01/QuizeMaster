@@ -12,7 +12,7 @@
             <a class="text-green-800 hover:text-blue-500" href="/user-signup">Signup</a>
             @endif
 
-            <a class="text-green-800 hover:text-blue-500" href="/">Blog</a>
+            {{-- <a class="text-green-800 hover:text-blue-500" href="/">Blog</a> --}}
         </div>
     </div>
 

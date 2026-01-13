@@ -208,14 +208,20 @@ if ($mcqData) {
 // user quiz is completed or not
 
 function userDetails(){
-    $quizRecord = Record::withQuiz()->where('user_id',Session::get('user')->id)->paginate(5);
+    $user = Session::get('user');
+
+  $quizRecord = Record::withQuiz()
+        ->where('user_id', $user->id)
+        ->orderBy('records.id', 'desc')   // latest record first
+        ->paginate(10);
+
     return view('user-details',['quizRecord'=>$quizRecord]);
 }
 
 
 
 
-//  searching
+//  searching quiz 
 
 function searchQuiz(Request $req){
     $quizData = Quizze::withCount('Mcqs')->where('name','like','%'.$req->search.'%')->get(); //use withCount because on ui count is not visible
@@ -223,6 +229,7 @@ function searchQuiz(Request $req){
 }
 
 
+// searching categorie 
 function searchCategories(Request $req){
     $quizData = Categorie::where('name','like','%'.$req->searchcategory.'%')->get(); //use withCount because on ui count is not visible
     return view('categories-search',['quizData'=>$quizData,'quiz'=>$req->searchcategory]);
