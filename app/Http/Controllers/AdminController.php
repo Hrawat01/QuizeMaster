@@ -108,6 +108,11 @@ class AdminController extends Controller
    }
 
 
+
+
+   //delete categories  
+
+
    function deleteCategory($id){
        $name =Categorie::find($id);
     $del = Categorie::find($id)->delete();
@@ -116,6 +121,10 @@ class AdminController extends Controller
         return redirect('admin-categories');
     }
    }
+
+
+   //add Quiz 
+
 
    function addQuiz(){
        $admin =  Session::get('admin');
@@ -148,6 +157,8 @@ class AdminController extends Controller
 
 
 //    add mcqs
+
+
 function addMCQs(Request $req){
     if($req->submit=='back'){
         Session::forget('quizDetails');

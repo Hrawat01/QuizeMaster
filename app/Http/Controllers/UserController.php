@@ -39,6 +39,10 @@ class UserController extends Controller
    
     }
 
+
+
+    //quiz start
+
     function startQuiz($id,$name){
         $quizCount=  Mcq::where('quiz_id',$id)->count();
         $mcqs = Mcq::where('quiz_id',$id)->get();
@@ -50,6 +54,9 @@ class UserController extends Controller
         return view('start-quiz',['quizCount'=>$quizCount,'quizName'=>$quizName]);
     }
 
+
+
+    //user SignUp
 
     function userSignup(Request $req){
         $validate = $req->validate([
@@ -74,16 +81,26 @@ class UserController extends Controller
     }
 }
 
+
+//user logout
+
+
 function userLogout(){
     Session::forget('user');
     return redirect('/');
 }
+
+
+//user signup from the quiz
+
 
 function userSignupQuiz(){
     Session::put('quiz-url', url()->previous());
     return view('user-signup');
 
 }
+
+//user login  
 
 
  function userLogin(Request $req){
@@ -107,13 +124,16 @@ function userSignupQuiz(){
     }
 }
 
+
+
+//user login from the quiz
 function userLoginQuiz(){
     Session::put('quiz-url', url()->previous());
     return view('user-login');  
 }
 
 
-
+  //mcq page
 function mcq($id,$name){
     $record = new Record();
     $record->user_id= Session::get('user')->id;
