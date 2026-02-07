@@ -2,5 +2,7 @@
 php artisan serve
 
 #for tailwind css =>
-npm install            //install dependencies
-npm run dev            //run
+//install dependencies
+npm install     
+//run
+npm run dev          
